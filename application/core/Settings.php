@@ -51,7 +51,11 @@ class OPC_Settings {
 	* @return	String 		value of setting 
 	*/
 	public static function init(){
-		//todo
+		$db = new OPC_Database();
+		$result = $db->get('OPC_Settings');
+		foreach ($result as $setting) {
+			self::$settings[$setting['name']] = $setting['value']; 
+		}
 	}
 }
 

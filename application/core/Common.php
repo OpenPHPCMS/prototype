@@ -59,6 +59,30 @@ if (!function_exists('load_class')) {
 }
 
 /**
+* isValidUrlData
+*
+* Chekcs if given string is valid url data
+* valid url data is: a-z A-Z 0-9 . / : - _ ~ %
+*
+* @access  public
+* @param   string  Data needed to check
+* @return  boolean
+*/
+if (!function_exists('base_url')) {
+    
+    function base_url($request = ''){
+        $baseURL = OPC_Settings::get('base_url');
+        if($baseURL == ''){
+            $protocol = ($_SERVER['HTTPS'] && $_SERVER['HTTPS'] != "off") ? "https" : "http";
+            return $protocol . "://" . $_SERVER['HTTP_HOST'] .'/'.$request;
+        } else {
+           return $baseURL.$request; 
+        }
+    }
+    
+}
+
+/**
 * random String
 *
 * Create an random string of the given length
