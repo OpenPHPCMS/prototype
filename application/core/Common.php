@@ -80,13 +80,13 @@ if(!function_exists('random_string')){
 }
 
 /* load super class page */
-load_class("page", "core");
+load_class("Page", "core");
 
 /* load class template */
-load_class("template", "core");
+load_class("Template", "core");
 
 /* load class database */
-load_class("database", "core");
+load_class("Database", "core");
 
 /* End of file common.php */
 /* Location: ./application/core/common.php */

@@ -13,4 +13,4 @@ $config_path = realpath(dirname(__FILE__)).'/application/config/';
 define('__CONFIG_PATH', $config_path);
 
 /* * * include the common.php * * */
-include __APPLICATION_PATH . 'core/common.php';
+include __APPLICATION_PATH . 'core/Common.php';
