@@ -12,5 +12,5 @@ define('__APPLICATION_PATH', $application_path);
 $config_path = realpath(dirname(__FILE__)).'/application/config/';
 define('__CONFIG_PATH', $config_path);
 
-/* * * include the common.php * * */
-include __APPLICATION_PATH . 'core/Common.php';
+/* * * include the System Initialization File * * */
+require(__APPLICATION_PATH . 'core/OpenPhpCms.php');
