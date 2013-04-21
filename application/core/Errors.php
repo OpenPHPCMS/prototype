@@ -17,7 +17,7 @@
 *
 * Handle PHP errors and exceptions
 *
-* @package		MartensMCV
+* @package		OpenPhpCms
 * @subpackage   Core
 * @category     Core
 * @author		Maikel Martens

@@ -17,7 +17,7 @@
 *
 * Class with all the OpenPhpCms settings
 *
-* @package		MartensMCV
+* @package		OpenPhpCms
 * @subpackage  	Core
 * @category    	Core
 * @author		Maikel Martens

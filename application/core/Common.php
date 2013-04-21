@@ -17,7 +17,7 @@
 *
 * Loads the commen functions and classes.
 *
-* @package		MartensMCV
+* @package		OpenPhpCms
 * @subpackage   Core
 * @category     Core
 * @author		Maikel Martens
@@ -103,17 +103,20 @@ if(!function_exists('random_string')){
     }
 }
 
-/* load class Settings */
+/* load class OPC_Settings */
 load_class("Settings", "core");
 
-/* load super class page */
+/* load super class OPC_Page */
 load_class("Page", "core");
 
-/* load class template */
+/* load class OPC_Template */
 load_class("Template", "core");
 
-/* load class database */
+/* load class OPC_Database */
 load_class("Database", "core");
+
+/* load class OPC_Session */
+load_class("Session", "core");
 
 /* End of file Common.php */
 /* Location: ./application/core/Common.php */
