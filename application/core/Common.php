@@ -103,6 +103,24 @@ if(!function_exists('random_string')){
     }
 }
 
+/**
+* redirect
+*
+* redirect to given page or url
+*
+* @access   public
+* @param    string     page/url
+* @return   void
+*/
+if ( ! function_exists('redirect')) {
+    function redirect($url = '') {
+        if (!preg_match('#^https?://#i', $url)) {
+            $url = base_url($url);
+        }
+        header("Location: ".$url, TRUE);
+    }
+}
+
 /* load class OPC_Settings */
 load_class("Settings", "core");
 

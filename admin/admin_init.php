@@ -47,6 +47,34 @@ session_set_save_handler(
 
 session_start();
 
+/*
+* ------------------------------------------------------
+*  Function for loading admin views
+* ------------------------------------------------------
+*/
+if (!function_exists('load_view')) {
+
+    function load_view($file, $data = array()) {
+    	/* Set variables from array */
+        foreach ($data as $key => $value) {
+            $$key = $value;
+        }
+
+        $file = __ADMIN_PATH . 'views/' . $file . '.php';
+        if (!is_readable($file)) {
+            throw new Exception("View file not exists '" . $file . "'");
+        }
+        require(__ADMIN_PATH."essentials/header.php");
+		require(__ADMIN_PATH."essentials/sidebar.php");
+		require(__ADMIN_PATH."essentials/topbar.php");
+		echo "<section class=\"main\">";
+        require($file);
+        echo "</section>";
+        require(__ADMIN_PATH."essentials/footer.php");
+    }
+
+}
+
 
 /*
 * ------------------------------------------------------
@@ -67,7 +95,8 @@ define('__ROLE_ADMIN'	, 3);
 */
 
 $secure = new OPC_Secure();
-if(!$secure->isLoggedin()){
-	require('login.php');
+if(!defined('__LOGIN_PAGE') && !$secure->isLoggedin()){
+	redirect('admin/login.php');
 	die();
 }
+$secure = null;
