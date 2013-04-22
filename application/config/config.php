@@ -2,9 +2,9 @@
 
 /*
 | -------------------------------------------------------------------
-| MartensMVC SETTINGS
+| OpenPHPCMS SETTINGS
 | -------------------------------------------------------------------
-| This file will contain the settings for MartensMVC.
+| This file will contain the settings for OpenCMSPHP.
 |
 */
 
