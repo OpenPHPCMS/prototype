@@ -55,7 +55,7 @@ class OPC_Settings {
 		$db->where('appid','core');
 		$result = $db->get('OPC_Settings');
 		foreach ($result as $setting) {
-			self::$settings[$setting['name']] = $setting['value']; 
+			self::$settings[$setting['setting_name']] = $setting['setting_value']; 
 		}
 	}
 }
