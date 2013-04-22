@@ -19,7 +19,7 @@ $password = '';
 /* The name of the database you want to connect to */
 $database = '';
 
-/* The port number where the MYSQL server is running on, defautl 3306 */
+/* The port number where the MYSQL server is running on, default 3306 */
 $port = '3306';
 
 
