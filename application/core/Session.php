@@ -125,7 +125,7 @@ class OPC_Session {
     */
     function gc($maxlifetime) {
         $time = time()-$maxlifetime;
-        $sql = "DELETE FROM OPC_Sessions WHERE lastAccessed < '$time'";
+        $sql = "DELETE FROM OPC_Sessions WHERE last_accessed < '$time'";
         $this->db->query($sql);
         return true;
     }

@@ -52,6 +52,7 @@ class OPC_Settings {
 	*/
 	public static function init(){
 		$db = new OPC_Database();
+		$db->where('appid','core');
 		$result = $db->get('OPC_Settings');
 		foreach ($result as $setting) {
 			self::$settings[$setting['name']] = $setting['value']; 
