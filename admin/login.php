@@ -13,11 +13,11 @@ $data['loginError'] = '';
 if( isset($_POST['login_submit']) ){
 	$data['username'] = $_POST['login_username'];
 	if( $_POST['login_token'] != $_SESSION['login_token'] ) {
-		$data['loginError'] .= "<p>Login session has expired.</p>";
+		$data['loginError'] .= "Login session has expired.<br/>";
 	} else {
 
 		if( !$secure->login($_POST['login_username'], $_POST['login_password']))
-			$data['loginError'] .= "<p>Incorrect username or password.</p>"; 
+			$data['loginError'] .= "Incorrect username or password.<br/>"; 
 		}
 }
 

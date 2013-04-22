@@ -18,6 +18,6 @@
 		<p><label class="formlabel">Password</label> 		<input class="textfield" type="text" name="login_password" id="login_password" /></p>
 
 		<hr/>
-		<input type="submit" name="login_submit" value="login_submit" class="Login" />
+		<input type="submit" name="login_submit" value="Login" class="button buttrans bluebut" />
 	</fieldset>
 </form>

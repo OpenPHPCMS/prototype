@@ -54,8 +54,8 @@
 			$output='';
 			
 			foreach ( $timezone_arr as $key=>$value ) {
-				$selected = ( ($_POST['gmt']==$key) ? $selected ='selected="selected"' : $selected = '' );
-				$output .= '<option value="'.$key.'" '.$selected.'>'.$value.'</option>';
+				//$selected = ( ($_POST['gmt']==$key) ? $selected ='selected="selected"' : $selected = '' );
+				$output .= '<option value="'.$key.'">'.$value.'</option>';
 			}
 				return $output;
 			}
