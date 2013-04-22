@@ -18,10 +18,10 @@
 			<a href='#'><li><img class='icon' src='images/icons/component.png' alt='' />	<span>Components</span>	</li></a>
 		<?PHP endif; 
 		if(secure()->hasUserAccess(__ROLE_ADMIN)): ?>
-			<a href='#'><li><img class='icon' src='images/icons/users.png' alt='' />		<span>Users</span>		</li></a>
+			<a href='<?PHP echo base_url('admin/users.php') ?>'><li><img class='icon' src='images/icons/users.png' alt='' />		<span>Users</span>		</li></a>
 		<?PHP endif; 
 		if(secure()->hasUserAccess(__ROLE_DEV)): ?>
-		<a href='#'><li><img class='icon' src='images/icons/template.png' alt='' />		<span>Templates</span>	</li></a>
+			<a href='#'><li><img class='icon' src='images/icons/template.png' alt='' />		<span>Templates</span>	</li></a>
 		<?PHP endif; ?>
 	</ul>
 </section>
