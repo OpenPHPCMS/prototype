@@ -1,5 +1,5 @@
-<section class="main">
-<!-- Heading -->
+<h1>Overview</h1>
+<hr>
 <h1>Hello, this is the h1 heading</h1>
 <h2>Hello, this is the h2 heading</h2>
 <h3>Hello, this is the h3 heading</h3>
@@ -162,5 +162,3 @@
 	</div>
 	<div class="clear"></div>
 </div>
-<!-- End content -->
-</section>

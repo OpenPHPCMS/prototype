@@ -1,9 +1,9 @@
 <section class="sidebar">
-	<img id='logo' src='images/logo_small.png' alt='logo' />
+	<a href='<?PHP echo base_url('admin') ?>'><img id='logo' src='images/logo_small.png' alt='logo' /></a>
 	
 	<ul id='menu'>
 		<?PHP if(secure()->hasUserAccess(__ROLE_ADMIN)): ?>
-			<a href='#'><li><img class='icon' src='images/icons/settings.png' alt='' />		<span>Settings</span>	</li></a>
+			<a href='<?PHP echo base_url('admin/settings.php') ?>'><li><img class='icon' src='images/icons/settings.png' alt='' />		<span>Settings</span>	</li></a>
 		<?PHP endif; 
 		if(secure()->hasUserAccess(__ROLE_USER)): ?>
 			<a href='#'><li><img class='icon' src='images/icons/pages.png' alt='' />		<span>Pages</span>		</li></a>
