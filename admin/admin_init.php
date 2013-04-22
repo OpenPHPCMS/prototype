@@ -88,15 +88,20 @@ define('__ROLE_USER'	, 1);
 define('__ROLE_DEV'		, 2);
 define('__ROLE_ADMIN'	, 3);
 
+if (!function_exists('secure')) {
+
+    function secure() {
+        return OPC_Secure::getInstance();
+    }
+
+}
+
 /*
 * ------------------------------------------------------
 *  Check if user is loggedin
 * ------------------------------------------------------
 */
-
-$secure = new OPC_Secure();
-if(!defined('__LOGIN_PAGE') && !$secure->isLoggedin()){
+if(!defined('__LOGIN_PAGE') && !secure()->isLoggedin()){
 	redirect('admin/login.php');
 	die();
 }
-$secure = null;

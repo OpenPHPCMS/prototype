@@ -19,12 +19,21 @@
 * Secure class handle the login and authorization
 *
 * @package		OpenPhpCms
-* @subpackage   Core
-* @category     Core
+* @subpackage   admin
+* @category     admin
 * @author		Maikel Martens
 */
 // ------------------------------------------------------------------------
 class OPC_Secure {
+	private static $secure = null;
+
+	private function __construct(){}
+
+	public static function getInstance(){
+		if(self::$secure == null)
+			self::$secure = new OPC_Secure();
+		return self::$secure;
+	}
 
 	/**
 	* hashPassword
