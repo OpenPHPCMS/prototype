@@ -106,12 +106,6 @@ if(!function_exists('random_string')){
 /* load class OPC_Settings */
 load_class("Settings", "core");
 
-/* load super class OPC_Page */
-load_class("Page", "core");
-
-/* load class OPC_Template */
-load_class("Template", "core");
-
 /* load class OPC_Database */
 load_class("Database", "core");
 
