@@ -46,3 +46,28 @@ session_set_save_handler(
     );
 
 session_start();
+
+
+/*
+* ------------------------------------------------------
+*  Load the OPC_Secure class and define user roles
+* ------------------------------------------------------
+*/
+require(__ADMIN_PATH.'Secure.php');
+
+define('__ROLE_GUEST'	, 0);
+define('__ROLE_USER'	, 1);
+define('__ROLE_DEV'		, 2);
+define('__ROLE_ADMIN'	, 3);
+
+/*
+* ------------------------------------------------------
+*  Check if user is loggedin
+* ------------------------------------------------------
+*/
+
+$secure = new OPC_Secure();
+if(!$secure->isLoggedin()){
+	require('login.php');
+	die();
+}

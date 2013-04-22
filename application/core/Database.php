@@ -14,6 +14,35 @@
 // ------------------------------------------------------------------------
 
 /**
+* Database Connection class
+*
+* Holds one instance of the database connection
+*
+* @package      OpenPhpCms
+* @subpackage   Core
+* @category     Core
+* @author       Maikel Martens
+*/
+// ------------------------------------------------------------------------
+class OPC_Database_Connection{
+    private static $conn = null;
+
+    public static function getConnection(){
+        if(self::$conn == null){
+            require(__CONFIG_PATH . 'database.php');
+
+            self::$conn = new PDO(
+                            "mysql:host=" . $host . ";port=" . $port . ";dbname=" . $database,
+                            $user,
+                            $password,
+                            array(PDO::ATTR_PERSISTENT => true)
+            );
+        }
+        return self::$conn;
+    }
+}
+
+/**
 * Database class
 *
 * Database class for MYSQL uses PDO.
@@ -35,20 +64,13 @@ class OPC_Database {
     /**
 	* Constructer
 	*
-	* Create the PDO object and store it in $dbh
+	* Get the PDO object and store it in $dbh
 	*
 	* @access public
 	* @return void
 	*/
     public function __construct() {
-        include __CONFIG_PATH . 'database.php';
-
-        $this->dbh = new PDO(
-                        "mysql:host=" . $host . ";port=" . $port . ";dbname=" . $database,
-                        $user,
-                        $password,
-                        array(PDO::ATTR_PERSISTENT => true)
-        );
+        $this->dbh = OPC_Database_Connection::getConnection();
     }
 
 	/**
