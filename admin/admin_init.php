@@ -46,6 +46,65 @@ session_set_save_handler(
     );
 
 session_start();
+/*
+* ------------------------------------------------------
+*  Function for showing errors messages
+* ------------------------------------------------------
+*/
+
+if (!function_exists('display_error')) {
+
+    function display_error($error = null) {
+        if($error != null) {
+
+            $_SESSION['OPC_admin_error'] = $error;
+
+        } else if(!empty($_SESSION['OPC_admin_error'])) {
+
+            echo "<div class='error'>"
+            ."<div class='messageicon'>"
+            ."<img class='icon' src='".base_url('admin/images/icons/error.png')."' alt='' />"
+            ."</div>"
+            ."<div class='messagetext'>"
+            .$_SESSION['OPC_admin_error']
+            ."</div>"
+            ."</div>";
+
+            unset($_SESSION['OPC_admin_error']);
+        }
+    }
+
+}
+
+/*
+* ------------------------------------------------------
+*  Function for showing succes messages
+* ------------------------------------------------------
+*/
+
+if (!function_exists('display_succes')) {
+
+    function display_succes($error = null) {
+        if($error != null) {
+
+            $_SESSION['OPC_admin_succes'] = $error;
+        
+        } else if(!empty($_SESSION['OPC_admin_succes'])) {
+            
+            echo "<div class='succes'>"
+            ."<div class='messageicon'>"
+            ."<img class='icon' src='".base_url('admin/images/icons/error.png')."' alt='' />"
+            ."</div>"
+            ."<div class='messagetext'>"
+            .$_SESSION['OPC_admin_succes']
+            ."</div>"
+            ."</div>";
+
+            unset($_SESSION['OPC_admin_succes']);
+        }
+    }
+
+}
 
 /*
 * ------------------------------------------------------
@@ -68,6 +127,8 @@ if (!function_exists('load_view')) {
 		require(__ADMIN_PATH."essentials/sidebar.php");
 		require(__ADMIN_PATH."essentials/topbar.php");
 		echo "<section class=\"main\">";
+        display_error();
+        display_succes();
         require($file);
         echo "</section>";
         require(__ADMIN_PATH."essentials/footer.php");

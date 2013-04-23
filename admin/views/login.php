@@ -1,14 +1,3 @@
-<?PHP if(!empty($loginError)): ?>
-<div class='error'>
-	<div class="messageicon">
-		<img class='icon' src='images/icons/error.png' alt='' />
-	</div>
-	<div class="messagetext">
-		<?PHP echo $loginError; ?>
-	</div>
-</div>
-<?PHP endif; ?>
-
 <form action="login.php" method="post">
 	<fieldset>
 		<span class="formtitle">Login</span>

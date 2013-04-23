@@ -6,17 +6,18 @@ if(!defined('__SITE_PATH'))
 	require('admin_init.php');
 
 $data['username'] 	= '';
-$data['loginError'] = '';
+$loginError 		= '';
 
 if( isset($_POST['login_submit']) ){
 	$data['username'] = $_POST['login_username'];
 	if( $_POST['login_token'] != $_SESSION['login_token'] ) {
-		$data['loginError'] .= "Login session has expired.<br/>";
+		$loginError  .= "Login session has expired.<br/>";
 	} else {
 
 		if( !secure()->login($_POST['login_username'], $_POST['login_password']))
-			$data['loginError'] .= "Incorrect username or password.<br/>"; 
-		}
+			$loginError  .= "Incorrect username or password.<br/>"; 
+	}
+	display_error($loginError);
 }
 
 if( secure()->isLoggedin()) {
