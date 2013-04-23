@@ -118,6 +118,7 @@ if ( ! function_exists('redirect')) {
             $url = base_url($url);
         }
         header("Location: ".$url, TRUE);
+        die();
     }
 }
 

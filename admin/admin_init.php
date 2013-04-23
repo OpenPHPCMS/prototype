@@ -93,7 +93,7 @@ if (!function_exists('display_succes')) {
             
             echo "<div class='succes'>"
             ."<div class='messageicon'>"
-            ."<img class='icon' src='".base_url('admin/images/icons/error.png')."' alt='' />"
+            ."<img class='icon' src='".base_url('admin/images/icons/success.png')."' alt='' />"
             ."</div>"
             ."<div class='messagetext'>"
             .$_SESSION['OPC_admin_succes']

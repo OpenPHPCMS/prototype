@@ -217,6 +217,10 @@ textarea {
 	padding:10px 20px;
 }
 
+a.button {
+	text-decoration: none;
+}
+
 .button:hover {
 	cursor: pointer;
 }
