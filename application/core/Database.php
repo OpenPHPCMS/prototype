@@ -107,7 +107,7 @@ class OPC_Database {
     }
 
     /**
-	* Rest
+	* Reset
 	*
 	* Reset the where and orderBy.
 	*
@@ -119,6 +119,18 @@ class OPC_Database {
         $this->where_value = null;
         $this->orderby_field = null;
         $this->orderby_sort = null;
+    }
+
+    /**
+    * lastInsertId
+    *
+    * Returns the last ID used with insert query
+    *
+    * @access public
+    * @return int
+    */
+    public function lastInsertId(){
+        return $this->dbh->lastInsertId(); 
     }
 
     /**
