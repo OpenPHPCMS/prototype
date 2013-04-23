@@ -5,8 +5,8 @@ if(!defined('__SITE_PATH'))
 	require('admin_init.php');
 
 if( !secure()->hasUserAccess(__ROLE_ADMIN) ){
-	$data['error'] = "no access!";
-	load_view('error', $data);
+	display_error('no access!');
+	load_view();
 	die();
 }
 

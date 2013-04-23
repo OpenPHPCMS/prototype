@@ -113,23 +113,30 @@ if (!function_exists('display_succes')) {
 */
 if (!function_exists('load_view')) {
 
-    function load_view($file, $data = array()) {
+    function load_view($file = null, $data = array()) {
     	/* Set variables from array */
         foreach ($data as $key => $value) {
             $$key = $value;
         }
 
-        $file = __ADMIN_PATH . 'views/' . $file . '.php';
-        if (!is_readable($file)) {
-            throw new Exception("View file not exists '" . $file . "'");
-        }
         require(__ADMIN_PATH."essentials/header.php");
 		require(__ADMIN_PATH."essentials/sidebar.php");
 		require(__ADMIN_PATH."essentials/topbar.php");
 		echo "<section class=\"main\">";
+        
         display_error();
         display_succes();
-        require($file);
+        
+        if($file != null) {
+
+            $file = __ADMIN_PATH . 'views/' . $file . '.php';
+
+            if (!is_readable($file)) 
+                throw new Exception("View file not exists '" . $file . "'");
+            
+            require($file);
+        }
+        
         echo "</section>";
         require(__ADMIN_PATH."essentials/footer.php");
     }
