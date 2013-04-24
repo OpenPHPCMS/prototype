@@ -77,4 +77,4 @@ CREATE TABLE `OPC_Users` (
 INSERT INTO `OPC_Users` (`username`, `password`, `level`, `name`, `surname`, `email`, `create_date`) VALUES
 ('Admin', '861ef23e2b79e42d8c2a8dde30add3ab8632b2bdacc6ca42f275d97ad231935f449315581fea5a4f70b35ce6a533f752b03be2174ff4386da0f009ce66a9d16df0084ff7', 3, 'Admin', 'Admin', 'Admin', '2013-04-22 18:47:11'),
 ('User', '861ef23e2b79e42d8c2a8dde30add3ab8632b2bdacc6ca42f275d97ad231935f449315581fea5a4f70b35ce6a533f752b03be2174ff4386da0f009ce66a9d16df0084ff7', 1, 'user', 'user', 'user', '2013-04-22 22:40:09'),
-('Dev', '861ef23e2b79e42d8c2a8dde30add3ab8632b2bdacc6ca42f275d97ad231935f449315581fea5a4f70b35ce6a533f752b03be2174ff4386da0f009ce66a9d16df0084ff7', 2, 'dev', 'dev', 'dev', '2013-04-22 22:40:09'),
+('Dev', '861ef23e2b79e42d8c2a8dde30add3ab8632b2bdacc6ca42f275d97ad231935f449315581fea5a4f70b35ce6a533f752b03be2174ff4386da0f009ce66a9d16df0084ff7', 2, 'dev', 'dev', 'dev', '2013-04-22 22:40:09');
