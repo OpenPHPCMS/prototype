@@ -32,13 +32,20 @@ if(isset($_POST['user_submit'])){
 	$data['surname'] 	= $_POST['user_surname'];
 	$data['email'] 		= $_POST['user_email'];
 
-	$validate = true;
+ 	load_class('InputValidate','lib');
+ 	$validate = new InputValidate();
 
-	/**
-	* @todo validate
- 	*/
+ 	//Set validation
+ 	$validate->add('username', $data['username'], 'alphanumeric', 'empty = false; minlength = 3');
+ 	$validate->add('password', $data['password'], 'none', 'empty = false; minlength = 6');
+ 	$validate->add('level', $data['level'], 'numeric', 'empty = false');
+ 	$validate->add('name', $data['name'], 'alphabet', 'empty = false');
+ 	$validate->add('surname', $data['surname'], 'alphabet', 'empty = false');
+ 	$validate->add('email', $data['email'], 'email', 'empty = false');
 
-	if($validate){
+ 	$errors = $validate->validate();
+
+	if(empty($errors)){
 		$db = new OPC_Database();
 		$binds['username'] 	= $data['username'];
 		$binds['password'] 	= secure()->hashPassword($data['password']);
@@ -50,6 +57,12 @@ if(isset($_POST['user_submit'])){
 
 		display_succes('User <username> is added');
 		redirect('admin/users.php');
+	}
+
+	foreach ($errors as $input => $input_errors) {
+		foreach ($input_errors as $error) {
+			$data['error_'.$input] .= $error."<br/>";
+		}
 	}
 }
 

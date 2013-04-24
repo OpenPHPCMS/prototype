@@ -232,6 +232,13 @@ textarea {
 	display: block;
 }
 
+.formError {
+	display: block;
+	margin-left: 160px;
+	font-size: 12px;
+	color: red;
+}
+
 
 /*buttons*/
 .button {
