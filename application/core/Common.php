@@ -48,6 +48,8 @@ if (!function_exists('load_class')) {
         global $loaded_class;
         $file = __APPLICATION_PATH . $path . "/" . $class . ".php";
         if (is_readable($file) && !in_array($class, $loaded_class)) {
+            if($path == 'core')
+                $class= 'OPC_'.$class;
             $loaded_class[] = $class;
             require($file);
             return true;
