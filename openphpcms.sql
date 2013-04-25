@@ -12,6 +12,17 @@ CREATE TABLE `OPC_Pages` (
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 -- --------------------------------------------------------
 --
+-- Table structure for table `OPC_Page_components`
+--
+DROP TABLE IF EXISTS `OPC_Page_components`;
+CREATE TABLE `OPC_Page_components` (
+  `page_id` int(10) NOT NULL,
+  `component_name` varchar(64) NOT NULL,
+  `page_location` varchar(32) NOT NULL,
+  PRIMARY KEY (`page_id`,`component_name`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+-- --------------------------------------------------------
+--
 -- Table structure for table `OPC_Page_content`
 --
 DROP TABLE IF EXISTS `OPC_Page_content`;
@@ -48,7 +59,7 @@ CREATE TABLE `OPC_Settings` (
 -- Ddata for table `OPC_Settings`
 --
 INSERT INTO `OPC_Settings` (`appid`, `setting_name`, `setting_value`) VALUES
-('core', 'base_url', 'http://openphpcms,org'),
+('core', 'base_url', 'http://dailybuild.openphpcms.org/'),
 ('core', 'slogan', ''),
 ('core', 'title', 'Open PHP CMS'),
 ('core', 'description', ''),
@@ -75,6 +86,6 @@ CREATE TABLE `OPC_Users` (
 -- Data for table `OPC_Users`
 --
 INSERT INTO `OPC_Users` (`username`, `password`, `level`, `name`, `surname`, `email`, `create_date`) VALUES
-('Admin', '861ef23e2b79e42d8c2a8dde30add3ab8632b2bdacc6ca42f275d97ad231935f449315581fea5a4f70b35ce6a533f752b03be2174ff4386da0f009ce66a9d16df0084ff7', 3, 'Admin', 'Admin', 'Admin', '2013-04-22 18:47:11'),
-('User', '861ef23e2b79e42d8c2a8dde30add3ab8632b2bdacc6ca42f275d97ad231935f449315581fea5a4f70b35ce6a533f752b03be2174ff4386da0f009ce66a9d16df0084ff7', 1, 'user', 'user', 'user', '2013-04-22 22:40:09'),
-('Dev', '861ef23e2b79e42d8c2a8dde30add3ab8632b2bdacc6ca42f275d97ad231935f449315581fea5a4f70b35ce6a533f752b03be2174ff4386da0f009ce66a9d16df0084ff7', 2, 'dev', 'dev', 'dev', '2013-04-22 22:40:09');
+('Admin', '88a019a91e3c0d60c6eec6578fc6490bba2688576276b89f79e9e30f6a6508000c2a99a8db147aa578d16bf9c2e029ee72b36c5face905b7187a25836f7c309af3c0127f', 3, 'Admin', 'Admin', 'Admin', '2013-04-22 18:47:11'),
+('User', 'cb86e3199e65d1cfef1da4393939b6820ce78f7dc809222c324f4ffe34d826cd8c67362b71bd11ef593e7a2baa8f01e57ead75df8b265062e4cc22ce8e00403a1b7db3b4', 1, 'user', 'user', 'user', '2013-04-22 22:40:09'),
+('Dev', 'cdf09597911d0596b7bfe46315594e878adaa3dd82f5a82150ab275eb9c88f420ebf7625bf6d62086a592b41a53b42e6ea458095f86df6982ec003481d2561afe7e9fd17', 2, 'dev', 'dev', 'dev', '2013-04-22 22:40:09');
