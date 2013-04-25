@@ -25,13 +25,24 @@ require(__APPLICATION_PATH . 'core/OpenPhpCms.php');
 ?>
 <html>
 <head>
-	<title>OpenPhpCms Daily Build Prototype</title>
+	<title>OpenPHPCMS - Daily Build Prototype</title>
 </head>
 <body>
 
 <h3>This is an prototype and there is no front end yet</h3>
+
 <p>
-	You can see the admin panel <a href="<?PHP echo base_url('admin') ?> ">here</a>
+	<?php
+	$filename = 'index.php';
+	if (file_exists($filename)) {
+		$Date = date ("F d Y H:i:s", filemtime($filename));
+	}
+	?>
+	This daily build has been updated on <?php echo $Date; ?>.<br />
+	The next update will be on <?php echo date('F d Y', strtotime($Date. ' + 1 days'));?>  00:00:00.
+</p>
+<p>
+	You can visit the admin panel <a href="<?PHP echo base_url('admin') ?> ">here</a>
 </p>
 <p>Admin panel accounts: </p>
 <table>
