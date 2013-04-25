@@ -1,5 +1,28 @@
 <?PHP if (!defined('__SITE_PATH')) exit('No direct script access allowed');
+/**
+* OpenPhpCms
+*
+* An open CMS for PHP/MYSQL
+*
+* @author		Maikel Martens
+* @copyright    Copyright (c) 20013 - 2013, openphpcms.org.
+* @license		http://openphpcms.org/license.html
+* @link         http://openphpcms.org
+* @since		Version 1.0
+*/
+// ------------------------------------------------------------------------
 
+/**
+* Page class
+*
+* Core class for all the pages, makes the calls to the type page object
+*
+* @package      OpenPhpCms
+* @subpackage   Core
+* @category     Core
+* @author       Maikel Martens
+*/
+// ------------------------------------------------------------------------
 class OPC_Page {
 	public $id;
 	public $name;
@@ -10,12 +33,31 @@ class OPC_Page {
 
 	private $db;
 
+	/**
+	* Constructer
+	*
+	* Set database connection, page type and optional page id
+	* when it is a page that already exists.
+	*
+	* @access public
+	* @return void
+	*/
 	public function __construct($database, $type, $id = null){
 		$this->db = $database;
 		$this->type = $type;
 		$this->id = $id;
 	}
 
+
+	/**
+	* setComponents
+	*
+	* Split the components to there page location.
+	*
+	* @access public
+	* @param array components
+	* @return void
+	*/
 	public function setComponents($components){
 		$this->components = array('header' 		=> array(),
 								  'top_page' 	=> array(),
@@ -40,15 +82,41 @@ class OPC_Page {
 		}
 	}
 
+	/**
+	* getComponents
+	*
+	* Get the components of an specific location
+	* when no location is set it wil return all
+	* components.
+	*
+	* @access public
+	* @param String location
+	* @return void
+	*/
 	public function getComponents($Location = null){
-		if($Location == null)
-			return $this->components;
+		if($Location == null) {
+			$components = array();
+			foreach ($this->components as $components_location) {
+				foreach ($components_location as $component) {
+					$components[] = $component;
+				}
+			}
+			return $components;
+		}
 		if(isset($this->components[$Location]))
 			return $this->components[$Location];
 		else
 			return null;
 	}
 
+	/**
+	* getData
+	*
+	* Returns all the data from the page 
+	*
+	* @access public
+	* @return void
+	*/
 	public function getData(){
 		$data['name'] = $this->name;
 		$data['title'] = $this->title;
@@ -57,12 +125,30 @@ class OPC_Page {
 		return array_merge($data, $this->typeObject->getData());
 	}
 
+	/**
+	* validate
+	*
+	* Validate the data that is set and returns list with errors
+	* when there are some. 
+	*
+	* @access public
+	* @return void
+	*/
 	public function validate(){
 		$errors = array();
 
 		return array_merge($errors, $this->typeObject->validate());
 	}
 
+	/**
+	* save
+	*
+	* When no id is it wil insert an new page in database
+	* else it wil update page in database.
+	*
+	* @access public
+	* @return void
+	*/
 	public function save(){
 		$this->db->reset();
 		
@@ -82,6 +168,14 @@ class OPC_Page {
 		}	
 	}
 
+	/**
+	* remove
+	*
+	* Remove all page data from database.
+	*
+	* @access public
+	* @return void
+	*/
 	public function remove(){
 		$this->typeObject->remove();
 		
