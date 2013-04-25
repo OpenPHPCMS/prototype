@@ -9,7 +9,7 @@
 			<a href='<?PHP echo base_url('admin/pages.php') ?>'><li><img class='icon' src='images/icons/pages.png' alt='' />		<span>Pages</span>		</li></a>
 		<?PHP endif; 
 		if(secure()->hasUserAccess(__ROLE_DEV)): ?>
-			<a href='#'><li><img class='icon' src='images/icons/menu.png' alt='' />			<span>Menu</span>		</li></a>
+			<a href='<?PHP echo base_url('admin/menu.php') ?>'><li><img class='icon' src='images/icons/menu.png' alt='' />			<span>Menu</span>		</li></a>
 		<?PHP endif; 
 		if(secure()->hasUserAccess(__ROLE_USER)): ?>
 			<a href='#'><li><img class='icon' src='images/icons/images.png' alt='' />		<span>Images</span>		</li></a>
