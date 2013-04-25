@@ -1,28 +1,29 @@
 <?PHP if (!defined('__SITE_PATH')) exit('No direct script access allowed');
 
-abstract class OPC_Page {
+class OPC_Page {
 	public $id;
 	public $name;
 	public $title;
 	public $type;
+	public $typeObject;
 	private $components;
 
 	private $db;
 
-	public function __construct($database, $components, $id = null){
-		$this->db = $database
-		$this->setComponents($components);
+	public function __construct($database, $type, $id = null){
+		$this->db = $database;
+		$this->type = $type;
 		$this->id = $id;
 	}
 
-	private function setComponents($components){
+	public function setComponents($components){
 		$this->components = array('header' 		=> array(),
 								  'top_page' 	=> array(),
 								  'bottom_page' => array(),
 								  'footer' 		=> array()
 								  );
 		foreach ($components as $component) {
-			switch ($component['page_location']) {
+			switch ($component->page_location) {
 				case 'header':
 					$this->components['header'][] = $component;
 					break;
@@ -53,13 +54,13 @@ abstract class OPC_Page {
 		$data['title'] = $this->title;
 		$data['type'] = $this->type;
 
-		return array_merge($data, $this->getDataPage());
+		return array_merge($data, $this->typeObject->getData());
 	}
 
 	public function validate(){
 		$errors = array();
 
-		return array_merge($errors, $this->validatePage());
+		return array_merge($errors, $this->typeObject->validate());
 	}
 
 	public function save(){
@@ -70,32 +71,28 @@ abstract class OPC_Page {
 		$binds['type'] = $this->type;
 
 		if($this->id == null) {
-			$this->db->insert('OPC_Page' $binds);
-			$this->savePage();
+			$this->db->insert('OPC_Pages', $binds);
+			$this->id = $this->db->lastInsertId();
+			$this->typeObject->page_id = $this->id;
+			$this->typeObject->save();
 		} else {
 			$this->db->where('id', $this->id);
-			$this->db->update('OPC_Page' $binds);
-			$this->updatePage();
+			$this->db->update('OPC_Pages', $binds);
+			$this->typeObject->update();
 		}	
 	}
 
 	public function remove(){
-		$this->removePage();
+		$this->typeObject->remove();
 		
 		$this->db->reset();
-/**
-*@todo Remove components
-*/
-		$this->db->where('id', $this->id);
-		$this->db->delete('OPC_Page');
-	}
+		$this->db->where('page_id', $this->id);
+		$this->db->delete('OPC_Page_components');
 
-	public abstract function validatePage();
-	public abstract function getDataPage();
-	public abstract function savePage();
-	public abstract function updatePage();
-	public abstract function removePage();
-	
+		$this->db->reset();
+		$this->db->where('id', $this->id);
+		$this->db->delete('OPC_Pages');
+	}
 }
 
 /* End of file Page.php */
