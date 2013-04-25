@@ -1,3 +1,25 @@
+--
+-- Table structure for table `OPC_Menu`
+--
+DROP TABLE IF EXISTS `OPC_Menu`;
+CREATE TABLE `OPC_Menu` (
+  `id` int(10) NOT NULL AUTO_INCREMENT,
+  `name` varchar(64) NOT NULL,
+  `link` varchar(256) NOT NULL,
+  `parent` int(11) DEFAULT '0',
+  `order_number` int(10) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
+--
+-- Data for table `OPC_Menu`
+--
+INSERT INTO `OPC_Menu` (`id`, `name`, `link`, `parent`, `order_number`) VALUES
+(1, 'Home', 'home', 0, 1),
+(2, 'Contact', 'contact', 0, 2),
+(3, 'about', 'about', 0, 3),
+(4, 'about sub', 'about sub', 3, 1),
+(5, 'contact sub', 'contact sub', 2, 1);
+
 -- --------------------------------------------------------
 --
 -- Table structure for table `OPC_Pages`
