@@ -179,7 +179,7 @@ class OPC_Database {
         $whereBind = array();
 
         /* Add WHERE when $where_field and $where_value are set */
-        if (!empty($this->where_field) && !empty($this->where_value)) {
+        if ($this->where_field !== null && $this->where_value !== null) {
             $query .= " WHERE " . $this->where_field . " = ? ";
             $whereBind[] = $this->where_value;
         }
